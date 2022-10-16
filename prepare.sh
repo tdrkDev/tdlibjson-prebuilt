@@ -11,7 +11,7 @@ fi
 
 if [ ! -d "openssl" ]; then
 	cd $__DIR__
-	./build-openssl.sh
+	tar -xf pre-openssl.tar.gz
 fi
 
 # Need to generate some files first, see https://github.com/tdlib/td/issues/1077#issuecomment-640056388

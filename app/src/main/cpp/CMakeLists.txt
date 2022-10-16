@@ -4,11 +4,11 @@ set(CMAKE_BUILD_TYPE MinSizeRel)
 
 set(root_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../../../..)
 
-set(openssl_DIR "${root_DIR}/third-party/openssl")
+set(openssl_DIR "${root_DIR}/openssl")
 set(OPENSSL_FOUND 1)
 set(OPENSSL_CRYPTO_LIBRARY "${openssl_DIR}/${ANDROID_ABI}/lib/libcrypto.a")
 set(OPENSSL_SSL_LIBRARY "${openssl_DIR}/${ANDROID_ABI}/lib/libssl.a")
-set(OPENSSL_INCLUDE_DIR "${openssl_DIR}/${ANDROID_ABI}/include")
+set(OPENSSL_INCLUDE_DIR "${openssl_DIR}/${ANDROID_ABI}include")
 set(OPENSSL_LIBRARIES "${OPENSSL_CRYPTO_LIBRARY};${OPENSSL_SSL_LIBRARY}")
 
 set(TD_DIR ${root_DIR}/td)
