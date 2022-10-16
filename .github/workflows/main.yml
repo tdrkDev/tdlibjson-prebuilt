@@ -6,29 +6,16 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container:
-      image: sstc/android-ndk
-      env:
-        GITHUB_ACTOR: ${{ github.actor }}
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v1
       - run: ./build.sh
       - run: |
           tar -czvf libs.tar.gz libs
           tar -czvf jniLibs.tar.gz jniLibs
-      - uses: ncipollo/release-action@v1
+      - name: Upload To release 
+        uses: softprops/action-gh-release@v1
         with:
-          allowUpdates: true
-          artifacts: "libs.tar.gz,jniLibs.tar.gz"
-          token: ${{ secrets.GITHUB_TOKEN }}
-      - uses: gradle/wrapper-validation-action@v1
-      - run: |
-          cp -r ./jniLibs ./app/src/main/
-          ./gradlew assembleRelease publish
-      - uses: up9cloud/action-notify@master
-        if: cancelled() == false
-        env:
-          GITHUB_JOB_STATUS: ${{ job.status }}
-          TELEGRAM_BOT_TOKEN: ${{secrets.TELEGRAM_BOT_TOKEN}}
-          TELEGRAM_CHAT_ID: ${{secrets.TELEGRAM_CHAT_ID}}
+          tag_name: tdlibjson
+          files: |
+            jniLibs.tar.gz
+            libs.tar.gz
