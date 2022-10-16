@@ -1,21 +1,25 @@
 #!/usr/bin/env bash
-
 ANDROID_NDK_VERSION=${2:-25.1.8937393}
 OPENSSL_INSTALL_DIR=${3:-third-party/openssl}
 OPENSSL_VERSION=${4:-openssl-3.0.6} # openssl-3.0.5
 
 if [ ! -d "$ANDROID_SDK_ROOT" ] ; then
-  echo "Error: directory \"$ANDROID_SDK_ROOT\" doesn't exist. Run ./fetch-sdk.sh first, or provide a valid path to Android SDK."              exit 1
+  echo "Error: directory \"$ANDROID_SDK_ROOT\" doesn't exist. Run ./fetch-sdk.sh first, or provide a valid path to Android SDK."
+  exit 1
 fi
 
 if [ -e "$OPENSSL_INSTALL_DIR" ] ; then
   echo "Error: file or directory \"$OPENSSL_INSTALL_DIR\" already exists. Delete it manually to proceed."
-  exit 1                                                              fi                                                                    
+  exit 1
+fi
+
 source ./check-environment.sh || exit 1
 
-mkdir -p $OPENSSL_INSTALL_DIR || exit 1                               
+mkdir -p $OPENSSL_INSTALL_DIR || exit 1
+
 ANDROID_SDK_ROOT="$(cd "$(dirname -- "$ANDROID_SDK_ROOT")" >/dev/null; pwd -P)/$(basename -- "$ANDROID_SDK_ROOT")"
-OPENSSL_INSTALL_DIR="$(cd "$(dirname -- "$OPENSSL_INSTALL_DIR")" >/dev/null; pwd -P)/$(basename -- "$OPENSSL_INSTALL_DIR")"                 
+OPENSSL_INSTALL_DIR="$(cd "$(dirname -- "$OPENSSL_INSTALL_DIR")" >/dev/null; pwd -P)/$(basename -- "$OPENSSL_INSTALL_DIR")"
+
 cd $(dirname $0)
 
 echo "Downloading OpenSSL sources..."
