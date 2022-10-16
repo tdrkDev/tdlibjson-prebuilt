@@ -1,5 +1,5 @@
 #!/bin/bash -e
-
+echo y | sudo apt install gperf
 __DIR__="$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
 
 if [ ! -d "td" ]; then
