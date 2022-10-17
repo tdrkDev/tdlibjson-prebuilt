@@ -1,6 +1,7 @@
 #!/bin/bash -e
 
 __DIR__="$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
+echo y | sudo apt install gperf
 
 if [ ! -d "td" ]; then
 	cd $__DIR__
