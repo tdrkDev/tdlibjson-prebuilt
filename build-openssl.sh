@@ -44,9 +44,9 @@ if ! clang --help >/dev/null 2>&1 ; then
 fi
 
 ANDROID_API32=16
-ANDROID_API64=33
+ANDROID_API64=21
 if [[ ${ANDROID_NDK_VERSION%%.*} -ge 24 ]] ; then
-  ANDROID_API32=33
+  ANDROID_API32=19
 fi
 
 for ABI in arm64-v8a armeabi-v7a x86_64 x86 ; do
