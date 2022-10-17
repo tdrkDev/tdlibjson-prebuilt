@@ -10,8 +10,11 @@ if [ ! -d "td" ]; then
 fi
 
 if [ ! -d "openssl" ]; then
+	./build-openssl.sh
+	mv third-party/openssl/arm64-v8a/include third-party/openssl/
+	mv third-party/openssl $__DIR__
 	cd $__DIR__
-	tar -xf ./prebuild-openssl.tar.gz
+	
 fi
 
 # Need to generate some files first, see https://github.com/tdlib/td/issues/1077#issuecomment-640056388
