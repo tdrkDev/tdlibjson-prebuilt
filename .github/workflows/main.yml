@@ -16,7 +16,7 @@ jobs:
       - name: Upload To release 
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: ${{ env.name }}
+          tag_name: tdlibjson
           files: |
             jniLibs.tar.gz
             libs.tar.gz
