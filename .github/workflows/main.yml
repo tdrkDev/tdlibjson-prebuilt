@@ -12,10 +12,11 @@ jobs:
       - run: |
           tar -czvf libs.tar.gz libs
           tar -czvf jniLibs.tar.gz jniLibs
+          echo "name=$(date)" >> $GITHUB_ENV
       - name: Upload To release 
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: tdlibjson
+          tag_name: ${{ env.name }}
           files: |
             jniLibs.tar.gz
             libs.tar.gz
