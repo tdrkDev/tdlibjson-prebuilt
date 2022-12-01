@@ -19,7 +19,7 @@ if (CMAKE_CROSSCOMPILING)
   string(APPEND CMAKE_CXX_FLAGS " -std=c++14 -fno-omit-frame-pointer -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti")
   string(APPEND CMAKE_SHARED_LINKER_FLAGS " -Wl,--gc-sections -Wl,--exclude-libs,ALL")
 
-  add_library(tdjson_android SHARED td_json_jni.cpp ${root_DIR}/td/td/telegram/td_json_client.cpp)
+  add_library(tdjson_android SHARED ${root_DIR}/td/td/telegram/td_json_client.cpp)
   target_link_libraries(tdjson_android PRIVATE Td::TdJsonStatic tdcore)
   set_target_properties(tdjson_android PROPERTIES
     OUTPUT_NAME tdjson
