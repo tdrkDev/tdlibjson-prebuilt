@@ -6,8 +6,8 @@ __DIR__="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 cd $__DIR__
 ./prepare.sh
 
-# ABIs="x86 x86_64 armeabi-v7a arm64-v8a"
-ABIs="x86_64 armeabi-v7a arm64-v8a"
+ABIs="x86 x86_64 armeabi-v7a arm64-v8a"
+# ABIs="x86_64 armeabi-v7a arm64-v8a"
 # FIXME: x86 would cause error:
 # ld: error: undefined symbol: __memcpy_chk
 # >>> referenced by string.h:48 (bionic/libc/include/bits/fortify/string.h:48)
